@@ -1,0 +1,52 @@
+{
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+  
+    "workbench.colorTheme": "Dracula",
+    "workbench.editor.labelFormat": "short",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.fontSize": 14,
+    "editor.lineHeight": 21,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.renderLineHighlight": "gutter",
+    "editor.parameterHints.enabled": false,
+    "editor.rulers": [80, 120],
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "explorer.compactFolders": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "extensions.ignoreRecommendations": true,
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "javascript.format.semicolons": "insert",
+    "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "typescript.format.semicolons": "insert",
+    "breadcrumbs.enabled": true,
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact",
+      "typescript": "typescriptreact"
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "workbench.startupEditor": "none",
+    "workbench.iconTheme": "material-icon-theme",
+    "colorize.languages": [
+      "javascript",
+      "typescript"
+      // ...
+    ],
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+  }
+  
