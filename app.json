@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "tira-time",
+    "slug": "tira-time",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
