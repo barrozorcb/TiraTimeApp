@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useCallback } from "react";
-
-import { Home } from "./src/screens/Home";
-
+import React from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "./src/styles/theme";
+import * as SplashScreen from "expo-splash-screen";
+import * as Font from "expo-font";
 
 import { Inter_400Regular, Inter_500Medium } from "@expo-google-fonts/inter";
 import {
@@ -12,13 +11,50 @@ import {
   Archivo_600SemiBold,
 } from "@expo-google-fonts/archivo";
 
-import * as SplashScreen from "expo-splash-screen";
-import * as Font from "expo-font";
+import { Routes } from "./src/routes";
 
-SplashScreen.preventAutoHideAsync();
+export default class App extends React.Component {
+  state = {
+    appIsReady: false,
+  };
 
-export default function App() {
-  const [appIsReady, setAppIsReady] = useState(false);
+  async componentDidMount() {
+    // Prevent native splash screen from autohiding
+    try {
+      await SplashScreen.preventAutoHideAsync();
+    } catch (e) {
+      console.warn(e);
+    }
+    this.prepareResources();
+  }
+
+  prepareResources = async () => {
+    await Font.loadAsync({
+      Inter_400Regular,
+      Inter_500Medium,
+      Archivo_400Regular,
+      Archivo_500Medium,
+      Archivo_600SemiBold,
+    });
+
+    this.setState({ appIsReady: true }, async () => {
+      await SplashScreen.hideAsync();
+    });
+  };
+
+  render() {
+    if (!this.state.appIsReady) {
+      return null;
+    }
+
+    return (
+      <ThemeProvider theme={theme}>
+        <Routes />
+      </ThemeProvider>
+    );
+  }
+
+  /* const [appIsReady, setAppIsReady] = useState(false);
 
   useEffect(() => {
     async function prepare() {
@@ -31,10 +67,9 @@ export default function App() {
           Archivo_600SemiBold,
         });
         await new Promise((resolve) => setTimeout(resolve, 2000));
+        setAppIsReady(true);
       } catch (e) {
         console.warn(e);
-      } finally {
-        setAppIsReady(true);
       }
     }
     prepare();
@@ -48,11 +83,13 @@ export default function App() {
 
   if (!appIsReady) {
     return null;
+  } else {
+    SplashScreen.hideAsync();
   }
 
   return (
     <ThemeProvider theme={theme}>
-      <Home onLayout={onLayoutRootView} />
+      <Routes />
     </ThemeProvider>
-  );
+  ); */
 }

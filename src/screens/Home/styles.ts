@@ -1,8 +1,12 @@
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import { getStatusBarHeight } from "react-native-iphone-x-helper";
+import {
+  getBottomSpace,
+  getStatusBarHeight,
+} from "react-native-iphone-x-helper";
 import { BorderlessButton } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
+import { FlatList } from "react-native";
 
 export const Container = styled.View`
   flex: 1;
@@ -67,3 +71,22 @@ export const Icon = styled(MaterialIcons)`
   color: ${({ theme }) => theme.colors.shape};
   font-size: ${RFValue(26)}px;
 `;
+
+export const LastGamesArea = styled.View`
+  flex: 1;
+  padding: 0 24px;
+`;
+
+export const Title = styled.Text`
+  color: ${({ theme }) => theme.colors.header};
+
+  font-size: ${RFValue(18)}px;
+  font-family: ${({ theme }) => theme.fonts.secondary_600};
+
+  margin: 16px 0;
+`;
+
+export const LastGamesList = styled(FlatList).attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: { paddingBottom: getBottomSpace() },
+})``;
