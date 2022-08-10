@@ -53,11 +53,11 @@ export function Home() {
         },
         {
           nameTeam: "Time do Waldemar",
-          amountVictory: 3,
+          amountVictory: 2,
         },
         {
           nameTeam: "Time do Tarcísio",
-          amountVictory: 2,
+          amountVictory: 4,
         },
       ],
     },

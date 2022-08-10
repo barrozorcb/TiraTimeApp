@@ -21,6 +21,8 @@ interface Props {
 export function LastGamesCard({ dataGame }: Props) {
   const [showResumeGame, setShowResumeGame] = useState(false);
 
+  dataGame.teams.sort((a, b) => b.amountVictory - a.amountVictory);
+
   function handleClickCard() {
     setShowResumeGame(true);
   }
