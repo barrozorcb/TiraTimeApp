@@ -5,6 +5,7 @@ import { Platform } from "react-native";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
 import { Home } from "../screens/Home";
+import { CreateGame } from "../screens/CreateGame";
 
 const Tab = createBottomTabNavigator();
 
@@ -35,7 +36,7 @@ export function AppRoutes() {
       />
       <Tab.Screen
         name="Create Game"
-        component={Home}
+        component={CreateGame}
         options={{
           headerShown: false,
           tabBarIcon: ({ size, color }) => (
