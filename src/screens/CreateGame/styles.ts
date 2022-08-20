@@ -13,41 +13,30 @@ export const Header = styled.View`
   background-color: ${({ theme }) => theme.colors.success};
 
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `;
 
 export const Title = styled.Text`
-  padding-top: 16px;
+  padding-top: 32px;
+  padding-left: 40px;
   color: ${({ theme }) => theme.colors.shape};
 
-  font-size: ${RFValue(32)}px;
+  font-size: ${RFValue(28)}px;
   font-family: ${({ theme }) => theme.fonts.secondary_600};
 `;
 
-export const Content = styled.View`
-  flex: 1;
+export const Form = styled.View`
+  /* flex: 1;
   align-items: flex-start;
 
-  padding: 0 16px;
-`;
-
-export const GamaNameTitle = styled.Text`
-  padding: 16px 0;
-  color: ${({ theme }) => theme.colors.text};
-
-  font-size: ${RFValue(16)}px;
-  font-family: ${({ theme }) => theme.fonts.secondary_400};
-`;
-
-export const GameName = styled.TextInput.attrs({
-  placeholderTextColor: "white",
-})`
+  padding: 0 16px; */
+  flex: 1;
+  justify-content: space-between;
   width: 100%;
-  height: 40px;
-  border: 2px solid ${({ theme }) => theme.colors.success};
-  border-radius: 5px;
-  padding: 10px;
-  font-size: ${RFValue(14)}px;
-  font-family: ${({ theme }) => theme.fonts.primary_400};
+  padding: 24px;
+
+  background-color: ${({ theme }) => theme.colors.shape};
 `;
+
+export const Fields = styled.View``;
