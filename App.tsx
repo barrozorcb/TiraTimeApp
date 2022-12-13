@@ -1,5 +1,46 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
+import { NativeBaseProvider, extendTheme } from "native-base";
+import {
+  useFonts,
+  Roboto_400Regular,
+  Roboto_400Regular_Italic,
+} from "@expo-google-fonts/roboto";
+import { SignIn } from "./src/screens/SignIn/SignIn";
+
+export default function App() {
+  let [fontsLoaded] = useFonts({
+    Roboto_400Regular,
+    Roboto_400Regular_Italic,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+  const theme = extendTheme({
+    fontConfig: {
+      Roboto: {
+        400: {
+          normal: "Roboto_400Regular",
+          italic: "Roboto_400Regular_Italic",
+        },
+      },
+    },
+
+    // Make sure values below matches any of the keys in `fontConfig`
+    fonts: {
+      heading: "Roboto",
+      body: "Roboto",
+      mono: "Roboto",
+    },
+  });
+  return (
+    <NativeBaseProvider theme={theme}>
+      <SignIn />
+    </NativeBaseProvider>
+  );
+}
+
+/*import { ThemeProvider } from "styled-components";
 import theme from "./src/styles/theme";
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
@@ -92,4 +133,3 @@ export default class App extends React.Component {
       <Routes />
     </ThemeProvider>
   ); */
-}
