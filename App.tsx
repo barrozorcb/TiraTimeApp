@@ -1,16 +1,25 @@
 import React from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NativeBaseProvider, extendTheme } from "native-base";
 import {
   useFonts,
   Roboto_400Regular,
   Roboto_400Regular_Italic,
 } from "@expo-google-fonts/roboto";
-import { SignIn } from "./src/screens/SignIn/SignIn";
+import {
+  Archivo_400Regular,
+  Archivo_400Regular_Italic,
+} from "@expo-google-fonts/archivo";
+import { SignUp } from "./src/screens/SignUp";
+
+import { Routes } from "./src/routes";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
     Roboto_400Regular,
     Roboto_400Regular_Italic,
+    Archivo_400Regular,
+    Archivo_400Regular_Italic,
   });
 
   if (!fontsLoaded) {
@@ -24,19 +33,27 @@ export default function App() {
           italic: "Roboto_400Regular_Italic",
         },
       },
+      Archivo: {
+        400: {
+          normal: "Archivo_400Regular",
+          italic: "Archivo_400Regular_Italic",
+        },
+      },
     },
 
     // Make sure values below matches any of the keys in `fontConfig`
     fonts: {
-      heading: "Roboto",
+      heading: "Archivo",
       body: "Roboto",
       mono: "Roboto",
     },
   });
   return (
-    <NativeBaseProvider theme={theme}>
-      <SignIn />
-    </NativeBaseProvider>
+    <SafeAreaProvider>
+      <NativeBaseProvider theme={theme}>
+        <Routes />
+      </NativeBaseProvider>
+    </SafeAreaProvider>
   );
 }
 

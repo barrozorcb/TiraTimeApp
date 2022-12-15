@@ -12,7 +12,7 @@ import {
   RankingVictory,
   TitleRanking,
   TeamName,
-} from "./styles";
+} from "./styles"; 
 
 interface Props {
   dataGame: DataGameDTO;
