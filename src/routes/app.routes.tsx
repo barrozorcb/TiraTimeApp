@@ -4,7 +4,7 @@ import { useTheme } from "styled-components";
 import { Platform } from "react-native";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
-import { Home } from "../screens/Home";
+import { Main } from "../screens/Main";
 import { CreateGame } from "../screens/CreateGame";
 
 const Tab = createBottomTabNavigator();
@@ -13,7 +13,19 @@ export function AppRoutes() {
   const theme = useTheme();
 
   return (
-    <Tab.Navigator
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Main"
+        component={Main}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ size, color }) => (
+            <Ionicons name="home" size={size} color={color} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+    /* <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: theme.colors.success,
         tabBarInactiveTintColor: theme.colors.text,
@@ -44,6 +56,6 @@ export function AppRoutes() {
           ),
         }}
       />
-    </Tab.Navigator>
+    </Tab.Navigator> */
   );
 }

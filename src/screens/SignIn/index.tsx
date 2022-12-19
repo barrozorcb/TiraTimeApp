@@ -46,11 +46,12 @@ export function SignIn() {
   function handleSignIn(data: DataProps) {
     console.log(data);
     //Alert.alert("Clicou no entrar!!");
+    navigation.navigate("TabTeste" as never);
   }
 
   function handleCadastar() {
     Alert.alert("Clicou no cadastar!!");
-    navigation.navigate("SignUp");
+    navigation.navigate("SignUp" as never);
   }
 
   return (
