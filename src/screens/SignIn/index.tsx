@@ -18,6 +18,7 @@ import { Input } from "../../components/InputSigIn";
 import { Button } from "../../components/ButtonSignIn";
 import { Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 type DataProps = {
   email: string;
@@ -41,17 +42,15 @@ export function SignIn() {
   } = useForm<DataProps>({
     resolver: yupResolver(signInSchema),
   });
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   function handleSignIn(data: DataProps) {
     console.log(data);
-    //Alert.alert("Clicou no entrar!!");
-    navigation.navigate("TabTeste" as never);
+    navigation.navigate("Main");
   }
 
   function handleCadastar() {
-    Alert.alert("Clicou no cadastar!!");
-    navigation.navigate("SignUp" as never);
+    navigation.navigate("SignUp");
   }
 
   return (
