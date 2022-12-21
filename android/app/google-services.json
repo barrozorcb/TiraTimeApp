@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "288151498086",
+    "project_id": "tiratime-7d51d",
+    "storage_bucket": "tiratime-7d51d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:288151498086:android:e4de7a14cda91eb8afeca7",
+        "android_client_info": {
+          "package_name": "com.tiratime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "288151498086-08l6jemav5tkhl2hu58ft9vk98to4v6j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGBX4qDib0NPz37efp6aXHZ2JAFeCTvoQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "288151498086-08l6jemav5tkhl2hu58ft9vk98to4v6j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

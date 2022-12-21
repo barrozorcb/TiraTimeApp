@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { VStack, Heading, Center, useTheme, ScrollView } from "native-base";
 import { useForm, Controller } from "react-hook-form";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigation } from "@react-navigation/native";
+import { Alert } from "react-native";
+import auth from "@react-native-firebase/auth";
 
 import { Input } from "../../components/InputSigIn";
 import { Button } from "../../components/ButtonSignIn";
-import { Alert } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
 type DataProps = {
   name: string;
@@ -33,6 +34,7 @@ const signUpSchema = yup.object({
 
 export function SignUp() {
   const theme = useTheme();
+  const [loading, setLoading] = useState(false);
   const {
     control,
     handleSubmit,
@@ -43,9 +45,27 @@ export function SignUp() {
   const navigation = useNavigation();
 
   function handleSignUp(data: DataProps) {
-    console.log(data);
-    Alert.alert("Clicou no cadastrar!!");
-    navigation.goBack();
+    setLoading(true);
+
+    auth()
+      .createUserWithEmailAndPassword(data.email, data.password)
+      .then(() => {
+        console.log("User account created & signed in!");
+        Alert.alert("Conta criada com sucesso!!");
+        navigation.goBack();
+      })
+      .catch((error) => {
+        if (error.code === "auth/email-already-in-use") {
+          console.log("That email address is already in use!");
+        }
+
+        if (error.code === "auth/invalid-email") {
+          console.log("That email address is invalid!");
+        }
+
+        console.error(error);
+      })
+      .finally(() => setLoading(false));
   }
 
   return (
@@ -130,7 +150,11 @@ export function SignUp() {
               )}
             />
 
-            <Button title="Cadastrar" onPress={handleSubmit(handleSignUp)} />
+            <Button
+              isLoading={loading}
+              title="Cadastrar"
+              onPress={handleSubmit(handleSignUp)}
+            />
           </Center>
         </VStack>
       </ScrollView>
